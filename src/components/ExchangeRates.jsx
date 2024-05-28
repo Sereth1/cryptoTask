@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 const getIconPath = (symbol) => {
-  // Adjust the path according to where your icons are stored
   return `/color/${symbol.toUpperCase()}.svg`;
 };
 
@@ -20,8 +19,8 @@ const ExchangeRates = () => {
           throw new Error("Failed to fetch exchange rates");
         }
         const data = await res.json();
-        console.log("Fetched rates data:", data); // Log the data structure
-        setRates(data.data.rates); // Adjust according to the structure of your API response
+        console.log("Fetched rates data:", data);
+        setRates(data.data.rates);
       } catch (err) {
         setError(err.message);
         console.error("Failed to fetch exchange rates:", err);
@@ -42,7 +41,6 @@ const ExchangeRates = () => {
     return <p className="text-gray-500 text-lg">Loading...</p>;
   }
 
-  // Check the structure of rates before mapping
   const renderRows = () => {
     return Object.entries(rates).map(([key, value], index) => (
       <tr key={index} className="border-b border-gray-200 hover:bg-gray-50">
